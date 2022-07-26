@@ -1,0 +1,350 @@
+/**  =====================
+      Data Tables css start
+==========================  **/
+.table {
+    // color: #888;
+    td,
+    th {
+        border-top: 1px solid $theme-border;
+        white-space: nowrap;
+        padding: 1.05rem 0.75rem;        
+    }
+    
+    thead {
+		>tr {
+			>th.sorting_asc {
+				padding-right: 30px;
+			}
+			>th.sorting_desc {
+				padding-right: 30px;
+			}
+			>th.sorting {
+				padding-right: 30px;
+			}
+			>td.sorting_asc {
+				padding-right: 30px;
+			}
+			>td.sorting_desc {
+				padding-right: 30px;
+			}
+			>td.sorting {
+				padding-right: 30px;
+			}
+			>th {
+				&:active {
+					outline: none;
+				}
+			}
+			>td {
+				&:active {
+					outline: none;
+				}
+			}
+		}
+		.sorting {
+			cursor: pointer;
+			position: relative;
+			&:before {
+				position: absolute;
+				bottom: 0.9em;
+				display: block;
+				opacity: 0.3;
+				right: 1em;
+				content: "\2191";
+			}
+			&:after {
+				position: absolute;
+				bottom: 0.9em;
+				display: block;
+				opacity: 0.3;
+				right: 0.5em;
+				content: "\2193";
+			}
+		}
+		.sorting_asc {
+			cursor: pointer;
+			position: relative;
+			&:before {
+				position: absolute;
+				bottom: 0.9em;
+				display: block;
+				opacity: 0.3;
+				right: 1em;
+				content: "\2191";
+				opacity: 1;
+			}
+			&:after {
+				position: absolute;
+				bottom: 0.9em;
+				display: block;
+				opacity: 0.3;
+				right: 0.5em;
+				content: "\2193";
+			}
+		}
+		.sorting_desc {
+			cursor: pointer;
+			position: relative;
+			&:before {
+				position: absolute;
+				bottom: 0.9em;
+				display: block;
+				opacity: 0.3;
+				right: 1em;
+				content: "\2191";
+			}
+			&:after {
+				position: absolute;
+				bottom: 0.9em;
+				display: block;
+				opacity: 0.3;
+				right: 0.5em;
+				content: "\2193";
+				opacity: 1;
+			}
+		}
+		.sorting_asc_disabled {
+			cursor: pointer;
+			position: relative;
+			&:before {
+				position: absolute;
+				bottom: 0.9em;
+				display: block;
+				opacity: 0.3;
+				right: 1em;
+				content: "\2191";
+				opacity: 0;
+			}
+			&:after {
+				position: absolute;
+				bottom: 0.9em;
+				display: block;
+				opacity: 0.3;
+				right: 0.5em;
+				content: "\2193";
+			}
+		}
+		.sorting_desc_disabled {
+			cursor: pointer;
+			position: relative;
+			&:before {
+				position: absolute;
+				bottom: 0.9em;
+				display: block;
+				opacity: 0.3;
+				right: 1em;
+				content: "\2191";
+			}
+			&:after {
+				position: absolute;
+				bottom: 0.9em;
+				display: block;
+				opacity: 0.3;
+				right: 0.5em;
+				content: "\2193";
+				opacity: 0;
+			}
+		}
+	}
+
+    thead th {
+        border-bottom: 1px solid $theme-border;
+    }
+
+    tbody + tbody {
+        border-top: 2px solid $theme-border;
+    }
+
+    &.table-sm {
+        th, td {
+            padding: 0.35rem;
+        }
+    }
+}
+/* Border versions */
+
+.table-bordered {
+    border: 1px solid $theme-border;
+
+    td,
+    th {
+        border: 1px solid $theme-border;
+    }
+}
+/* Zebra-striping */
+
+.table-striped {
+    tbody tr:nth-of-type(2n+1) {
+        background-color: transparentize($primary-color,0.95);
+    }
+}
+/* Hover effect */
+
+.table-hover {
+    tbody tr {
+        &:hover {
+            background-color: transparentize($primary-color,0.95);
+        }
+    }
+}
+/* Table backgrounds */
+
+.table {
+    .thead-dark {
+        th {
+            color: #fff;
+            background-color: $dark-color;
+            border-color: darken($dark-color,10%);
+        }
+    }
+}
+
+.table-dark {
+    color: #fff;
+    background-color: $dark-color;
+
+    td,
+    th,
+    thead th {
+        border-color: darken($dark-color,10%);
+    }
+
+    &.table-striped {
+        tbody tr:nth-of-type(odd) {
+            background-color: darken($dark-color,2%);
+        }
+    }
+
+    &.table-hover {
+        tbody tr {
+            &:hover {
+                background-color: darken($dark-color,5%);
+            }
+        }
+    }
+}
+
+div.dataTables_wrapper {
+	div.dataTables_length {
+		label {
+			font-weight: normal;
+			text-align: left;
+			white-space: nowrap;
+		}
+		select {
+			width: auto;
+			display: inline-block;
+		}
+	}
+	div.dataTables_filter {
+		text-align: right;
+		label {
+			font-weight: normal;
+			float: right;
+			white-space: nowrap;
+			text-align: left;
+		}
+		input {
+			margin-left: 0.5em;
+			display: inline-block;
+			width: auto;
+		}
+	}
+	div.dataTables_info {
+		padding-top: 0.85em;
+		white-space: nowrap;
+	}
+	div.dataTables_paginate {
+		margin: 0;
+		white-space: nowrap;
+		text-align: right;
+		ul.pagination {
+			margin: 2px 0;
+			white-space: nowrap;
+			justify-content: flex-end;
+		}
+	}
+	div.dataTables_processing {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 200px;
+		margin-left: -100px;
+		margin-top: -26px;
+		text-align: center;
+		padding: 1em 0;
+	}
+}
+/* fixed header position */
+
+table.dataTable.fixedHeader-floating {
+    top: 0 !important;
+    @media screen and (max-width:992px) {
+        display: none !important;
+    }
+}
+
+@media screen and (max-width:992px) {
+    .fixedHeader-locked {
+        display: none !important;
+    }
+}
+
+/**  =====================
+      Foo-table css start
+==========================  **/
+
+.footable .pagination > {
+    .active > {
+        a,
+        span {
+            background-color: $primary-color;
+            border-color: $primary-color;
+
+            &:focus,
+            &:hover {
+                background-color: $primary-color;
+                border-color: $primary-color;
+            }
+        }
+    }
+
+    li > {
+        a,
+        span {
+            color: #222;
+        }
+    }
+}
+
+.footable-details.table,
+.footable.table {
+    margin-bottom: 0;
+}
+
+table {
+    &.footable > tfoot > tr.footable-paging > td > span.label {
+        margin-bottom: 0;
+    }
+
+    &.footable-paging-center > tfoot > tr.footable-paging > td {
+        padding-bottom: 0;
+    }
+}
+
+.table-columned > {
+    tbody > {
+        tr > {
+            td {
+                border: 0;
+                border-left: 1px solid $theme-border;
+            }
+
+            th {
+                border: 0;
+            }
+        }
+    }
+}
+/**====== Foo-table css end ======**/
+/**====== Data Tables css end ======**/

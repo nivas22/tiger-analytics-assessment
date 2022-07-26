@@ -1,1 +1,1 @@
-# tiger-analytics-assessment
+# smart-shop-ui

@@ -1,0 +1,24 @@
+{
+  "env": "dev",
+  "port": "5000",
+  "httpsPort": "5001",
+  "enableHttp": true,
+  "appName": "smart_exam",
+  "jwt_secret":"FrqUbKyXW94CwQ9n",
+  "mysql": {
+      "host": "localhost",
+      "user": "root",
+      "password": "password",
+      "port": "3306",
+      "database": "products_db",
+      "connectionLimit": 200,
+      "multipleStatements": true
+  },
+  "expiryTime": {
+    "jwtToken": 1800,
+    "cookie": 31536000000
+  },
+  "api": {
+    "smartShop": "http://localhost:3000"
+  }
+}
