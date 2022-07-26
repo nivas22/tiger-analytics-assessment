@@ -2,7 +2,7 @@ import React from 'react';
 import Aux from "../../hoc/_Aux";
 import './app.scss';
 import NavMenu from './NavMenu';
-import User from '../../pages/User'
+import Product from '../../pages/Product'
 
 const AdminLayout = () => {
 
@@ -13,7 +13,7 @@ const AdminLayout = () => {
         <div className="pcoded-wrapper">
           <div className="main-content">
             <div className="pcoded-inner-content">
-              <User />
+              <Product />
             </div>
           </div>
         </div>

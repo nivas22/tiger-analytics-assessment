@@ -9,7 +9,7 @@ This is a Product managment app. Used tech stacks are ReactJS, ExpressJS, Redux,
 - [FILTER] - We can filetr using type, price.
 - [SEARCH] - We can search the product using its name.
 - [PAGINATION] - Pagination also implememted to navigate the app
-- [Webpack] - The module binder which takes all your JS files from different directories and compiles them into a single app.bundle.js (you can change the filename of course) so you can include it in a HTML page
+- [SORTING] - We can sort the data
 
 ### Libraries Used
  Client side application libraries:
@@ -28,7 +28,7 @@ This is a Product managment app. Used tech stacks are ReactJS, ExpressJS, Redux,
  - csv-parse
 
 # Installation
-Node Version: v10.11.0^
+Node Version: v12.20.0^
 Just clone this repo or download the zip file. `cd` into the directory and run
 
     yarn install

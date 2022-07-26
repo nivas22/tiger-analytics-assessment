@@ -13,7 +13,7 @@ import UploadModal from '../../components/UploadModel';
 import Loader from '../../components/Loader';
 import '../../components/component.scss';
 
-const PlayerList = () => {
+const ProductList = () => {
   const [showModal, setShowModalStatus] = useState(false);
   const {
     uploadFile,
@@ -323,4 +323,4 @@ const PlayerList = () => {
   );
 };
 
-export default PlayerList;
+export default ProductList;
