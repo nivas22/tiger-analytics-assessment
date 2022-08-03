@@ -24,7 +24,6 @@ This is a Product managment app. Used tech stacks are ReactJS, ExpressJS, Redux,
  - express-es6-template-engine
  - express file-upload
  - config
- - cookie-parser
  - csv-parse
 
 # Installation
