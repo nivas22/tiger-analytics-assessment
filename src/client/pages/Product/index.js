@@ -10,6 +10,7 @@ import { useApp } from '../../contexts/Product';
 import { TablePagination } from '../../components/Pagination';
 import { Slider } from '../../components/range/Slider';
 import UploadModal from '../../components/UploadModel';
+import { PROD_TABLE_ROWS } from './constants';
 import Loader from '../../components/Loader';
 import '../../components/component.scss';
 
@@ -36,51 +37,7 @@ const ProductList = () => {
   const [minPrice, setMinPrice] = useState(min);
   const [maxPrice, setMaxPrice] = useState(max);
   const [editId, setEditId] = useState(0);
-
-  const data =  {
-    columns: [
-      {
-        label: '#',
-        field: 'id',
-        width: 200,
-      },
-      {
-        label: 'Name',
-        field: 'name',
-        width: 200,
-        attributes: {
-          'aria-controls': 'DataTable',
-          'aria-label': 'Name',
-        },
-      },
-      {
-        label: 'Type',
-        field: 'type',
-        width: 200,
-      },
-      {
-        label: 'SKU',
-        field: 'sku',
-        width: 200,
-      },
-      {
-        label: 'Price',
-        field: 'price',
-        width: 400,
-      },
-      {
-        label: 'Created',
-        field: 'created',
-        width: 200,
-      }, 
-      {
-        label: 'Updated',
-        field: 'updated',
-        width: 200,
-      }
-    ]
-  };
-  
+ 
   useEffect(() => {
     getProductFilters();
   }, []);
@@ -98,6 +55,7 @@ const ProductList = () => {
       setTotalPages(count === Math.floor(count) ? count : Math.floor(count) + 1);
       setDataList(sorted);
     } else {
+      setDataList([]);
       setTotalPages(1);
       updateCurrentPage(1);
     }
@@ -142,10 +100,6 @@ const ProductList = () => {
     setShowModalStatus(!showModal);
   };
   
-  const handleOnClick = () => {
-    setShowModalStatus(true);
-  };
-  
   const clickApplyButton = () => {
     updateCurrentPage(1);
     if(types.length > 0) {
@@ -166,19 +120,17 @@ const ProductList = () => {
     updatePrice(obj.id, obj.price);
   }
   
-  const confirmAnswerSubmission = () => {
-    setEditId(0);
-    resetMessageAndError();
-    updateCurrentPage(1);
-    if(types.length > 0) {
-      getProducts((currentActivePage - 1) * recordLimit, recordLimit, typeFilter, minPrice, maxPrice, searchText);
+  const confirmAlert = () => {
+    if(message) {
+      setEditId(0);
+      updateCurrentPage(1);
+      if(types.length > 0) {
+        getProducts((currentActivePage - 1) * recordLimit, recordLimit, typeFilter, minPrice, maxPrice, searchText);
+      }
     }
-  };
-  
-  const onClickErrorOk = () => {
     resetMessageAndError();
   };
- 
+   
   return (
     <Aux>
       {showloader && <Loader />}
@@ -198,7 +150,7 @@ const ProductList = () => {
             </Col>
             <Col md={3}>
               <Form.Group>
-                <Button className="mb-2 float-right" onClick={handleOnClick}>Upload CSV</Button>
+                <Button className="mb-2 float-right" onClick={updateModalStatus}>Upload CSV</Button>
               </Form.Group>
             </Col>
           </Row>
@@ -264,7 +216,7 @@ const ProductList = () => {
                 <table className="display table nowrap table-striped table-hover dataTable">
                   <thead>
                     <tr>
-                      { data.columns.length > 0 &&  data.columns.map((col,index) => {
+                      { PROD_TABLE_ROWS.columns.length > 0 &&  PROD_TABLE_ROWS.columns.map((col,index) => {
                         const rootClass = classNames({
                           sorting_asc: col.field === sortField && sortType === 'asc',
                           sorting_desc: col.field === sortField && sortType === 'desc',
@@ -316,8 +268,8 @@ const ProductList = () => {
         
        
         
-        {message && <SweetAlert success title="Success" btnSize="sm" onConfirm={() => confirmAnswerSubmission()} >{message}</SweetAlert> }
-        {error && <SweetAlert error title="Failed" btnSize="sm" onConfirm={() => onClickErrorOk()} >{error}</SweetAlert> } 
+        {message && <SweetAlert success title="Success" btnSize="sm" onConfirm={() => confirmAlert()}> {message} </SweetAlert> }
+        {error && <SweetAlert error title="Failed" btnSize="sm" onConfirm={() => confirmAlert()}> {error} </SweetAlert> } 
       </Card>
     </Aux>
   );

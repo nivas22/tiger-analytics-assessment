@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import { createStore } from 'redux';
 import {BrowserRouter} from 'react-router-dom';
-import 'font-awesome/css/font-awesome.min.css';
 import App from './app';
 import reducer from './store/reducer';
 import * as serviceWorker from './serviceWorker';
